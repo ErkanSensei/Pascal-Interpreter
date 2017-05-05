@@ -45,7 +45,7 @@ function Interpreter(text) {
         // If it is, then return EOF token
 
         // Input left to convert into tokens
-        if (this.post > text.length - 1) {
+        if (this.pos > text.length - 1) {
             return new Token(EOF, null);
         }
 
@@ -68,7 +68,7 @@ function Interpreter(text) {
             this.pos += 1;
             return token;
         }
-        return;
+        this.error();
     }
 
     this.eat = function(token_type) {
