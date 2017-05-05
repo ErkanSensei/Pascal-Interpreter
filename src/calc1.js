@@ -9,7 +9,7 @@ function Token(type, value) {
     // Token value: Single digit #, '+', or null
     this.value = value;
 
-    this.__str__ = function() {
+    this.toString = function() {
         /* String representation of the class instance.
             Ex: Token(INTEGER, 3),
                 Token(PLUS, '+')
@@ -18,10 +18,6 @@ function Token(type, value) {
             type: this.type,
             value: this.value.toString()
         }
-    }
-
-    this.__repr__ = function() {
-        return this.__str__();
     }
 }
 
@@ -80,7 +76,7 @@ function Interpreter(text) {
             this.current_token = this.get_next_token();
         }
         else {
-            return false;
+            this.error();
         }
     }
     this.expr = function() {
